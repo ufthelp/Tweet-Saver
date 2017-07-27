@@ -1,0 +1,120 @@
+/*CSS for the main component*/
+.main-blk{
+    margin: 15px;
+    border: thin dotted #1da1f2;
+    height: auto !important;
+}
+.title-container{
+    background-color: #1da1f2;
+    padding: 16px 0;
+    color: #fff;
+    text-align: center;
+ }
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+}
+.txt-label {
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.btn {
+    margin-left: 20px;
+    background-color: #1da1f2;
+    border: 1px solid #1da1f2;
+    color: #fff;
+    border-radius: 20px;
+    line-height: 20px;
+    padding: 6px 16px;
+    cursor: pointer;
+    outline: 0
+}
+
+.btn:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    transition: box-shadow .3s ease-in-out; 
+}
+.btn:disabled{
+    background-color: gray;
+    border: 1px solid gray;
+}
+.tweet-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    color: #1da1f2;
+}
+
+.tweeter-blk{
+    width: 50%;
+    margin: 10px;
+}
+.screen-name {
+    color: #1da1f2;
+}
+main{
+    display: flex;
+    width:100%;
+}
+input[type="text"]
+{
+    border: none;
+    border-bottom: 2px solid #757575;
+    outline: none;
+    align-self: flex-end;
+}
+input[type="text"]:focus{
+   border-bottom: 2px solid #1da1f2;
+   transition: border-bottom 1s linear;
+}
+.clear-tweets {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+/*CSS for drag-drop component*/
+ul[dnd-list] li {
+    background-color: #fff;
+    border: 1px solid #1da1f2;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+}
+ul[dnd-list] {
+    min-height: 50px;
+    padding: 10px;
+    margin: 10px;
+}
+
+ul[dnd-list] li.selected{
+    background-color: #1da1f2;
+    color: #fff ;
+}
+ul[dnd-list] li.selected .screen-name {
+    color: #fff ;
+}
+ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+ul[dnd-list] .dndPlaceholder {
+    background-color: #ddd;
+    display: block;
+    min-height: 50px;
+}
+/*Media Query making the App respnsive*/
+@media(max-width: 768px){
+    main{
+        display: block;
+    }
+    .tweeter-blk {
+        width: 100%;
+        margin: 10px 0;
+   }
+
+}

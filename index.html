@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="twitterApp">
+<head>
+<title>Tweet Saver App</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.css" rel="stylesheet"/>
+</head>
+
+<body ng-controller="mainController" ng-cloak class="main-blk">
+<header >
+    <section class="title-container">
+         <h1> Tweet Saver App</h1>
+    </section>
+   
+    <section>
+        <form name="tweetform">
+            <label class="search-container">
+                 <input ng-model="searchKeyword" required type="text" placeholder="Search Tweets">
+                 <button class="btn" ng-click="searchTweets(searchKeyword)" ng-disabled="tweetform.$invalid">Search</button>
+            </label>        
+        </form>
+       
+    </section>
+    <section class="clear-tweets">
+           <button class="btn" ng-click="clearTweets()" ng-disabled="models.tweetsList.savedTweets.length === 0">Clear Saved List </button>
+    </section>
+</header>
+
+<main >
+    <section ng-repeat="(tweet, tweets) in models.tweetsList" class="tweeter-blk">
+        <div class="tweet-container">
+            <span class="tweet-title">{{ tweet === 'searchedTweets' ? 'Search Result' : 'Saved Tweets' }}</span>
+        </div>
+        <ul dnd-list="tweets" dnd-drop="callback({targetList: tweets, targetIndex: index})">
+                 <li ng-repeat="tweet in tweets track by $index "
+                dnd-draggable="tweet"
+                dnd-moved="tweets.splice($index, 1)"
+                dnd-effect-allowed="move"
+                dnd-selected="models.selected = tweet"
+                dnd-callback="onDrop(tweets, $index, targetList, targetIndex)"
+                ng-class="{'selected': models.selected === tweet}"
+                >
+                {{tweet.text}} <span class="screen-name"> #{{tweet.user.screenName}}<span>
+            </li>
+            </ul>
+    </section>
+</main>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="http://marceljuenemann.github.io/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+<script src="assets/js/app.js" type="text/javascript"></script>
+</body>
+
+</html>
